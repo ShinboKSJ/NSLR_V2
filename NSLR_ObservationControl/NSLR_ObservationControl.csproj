@@ -1,0 +1,1238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.8.0.20230708\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.8.0.20230708\build\net48\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2A04575-50A9-4FA9-A02A-841C117E83CD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NSLR_ObservationControl</RootNamespace>
+    <AssemblyName>NSLR_ObservationControl</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Build\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LOCALTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>build\obj</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV, Version=4.8.0.5324, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\Emgu.CV.4.8.0.5324\lib\netstandard2.0\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.Bitmap, Version=4.8.0.5324, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\Emgu.CV.Bitmap.4.8.0.5324\lib\netstandard2.0\Emgu.CV.Bitmap.dll</HintPath>
+    </Reference>
+    <Reference Include="GanttChart, Version=1.3.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Build\Debug\GanttChart.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="mv.impact.acquire">
+      <HintPath>Libs\mv.impact.acquire.dll</HintPath>
+    </Reference>
+    <Reference Include="mv.impact.acquire.display">
+      <HintPath>Libs\mv.impact.acquire.display.dll</HintPath>
+    </Reference>
+    <Reference Include="mv.impact.acquire.display.extensions">
+      <HintPath>Libs\mv.impact.acquire.display.extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="mv.impact.acquire.examples.helper">
+      <HintPath>Libs\mv.impact.acquire.examples.helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=7.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.7.0.4\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="NSLR-OAS, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\NSLR-OAS.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.8.0.20230708\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.CPlusPlus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.CPlusPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.DebuggerVisualizers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.DebuggerVisualizers.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.Extensions.4.8.0.20230708\lib\net48\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Gpu, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.Gpu.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCVSharp.2.4.0.1\lib\OpenCvSharp.UserInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.WpfExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.WpfExtensions.4.8.0.20230708\lib\net48\OpenCvSharp.WpfExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGlobe.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\OpenGlobe.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGlobe.Renderer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\OpenGlobe.Renderer.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGlobe.Scene, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\OpenGlobe.Scene.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PvDotNet, Version=6.2.8.5877, Culture=neutral, PublicKeyToken=666697f16d0ae86b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\PvDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="PvGUIDotNet, Version=6.2.8.5877, Culture=neutral, PublicKeyToken=666697f16d0ae86b, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\PvGUIDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SGP.NET, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SGP.NET.1.3.2\lib\netstandard2.0\SGP.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="SwissEphNet, Version=2.8.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SwissEphNet.2.8.0.2\lib\net40\SwissEphNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <!-- DPS 후처리 프로그램: 프로젝트 내 DPS_EXE 폴더 전체를 빌드 출력 폴더로 자동 복사 -->
+  <ItemGroup>
+    <Content Include="DPS_EXE\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddTLE_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTLE_Form.Designer.cs">
+      <DependentUpon>AddTLE_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Checking_OvservingData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Checking_OvservingData.Designer.cs">
+      <DependentUpon>Checking_OvservingData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlCommand.cs" />
+    <Compile Include="CSU_Observation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CSU_Observation.Designer.cs">
+      <DependentUpon>CSU_Observation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSU_ObserveSchedule2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSU_ObserveSchedule2.Designer.cs">
+      <DependentUpon>CSU_ObserveSchedule2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSU_StarCalibration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CSU_StarCalibration.Designer.cs">
+      <DependentUpon>CSU_StarCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CSU_ObserveSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CSU_ObserveSchedule.Designer.cs">
+      <DependentUpon>CSU_ObserveSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="InternalInterface.cs" />
+    <Compile Include="IRdisplay.cs" />
+    <Compile Include="Laser_NavigationTracking.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\debuggingPlot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\debuggingPlot.Designer.cs">
+      <DependentUpon>debuggingPlot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\GroundTargetMount.cs" />
+    <Compile Include="Module\ScanOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\ScanOption.Designer.cs">
+      <DependentUpon>ScanOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\zoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\zoomForm.Designer.cs">
+      <DependentUpon>zoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_LAS_DEB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_LAS_DEB.Designer.cs">
+      <DependentUpon>SystemDiagnostic_LAS_DEB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_RGG_DEB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_RGG_DEB.Designer.cs">
+      <DependentUpon>SystemDiagnostic_RGG_DEB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observation_Processing.cs" />
+    <Compile Include="ObserveSchedule_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObserveSchedule_Edit.Designer.cs">
+      <DependentUpon>ObserveSchedule_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orbital_Determination.cs" />
+    <Compile Include="Progress_State.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Progress_State.Designer.cs">
+      <DependentUpon>Progress_State.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Subsystem\ASICameraDll2.cs" />
+    <Compile Include="Module\CAMs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\CAMs.designer.cs">
+      <DependentUpon>CAMs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ChartView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\ChartView.Designer.cs">
+      <DependentUpon>ChartView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\circular.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\circular.Designer.cs">
+      <DependentUpon>circular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Common_TMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\Common_TMS.Designer.cs">
+      <DependentUpon>Common_TMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ConfigSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\ConfigSetting.Designer.cs">
+      <DependentUpon>ConfigSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subsystem\Interfaces.cs" />
+    <Compile Include="Subsystem\LAS_DEB_Controller.cs" />
+    <Compile Include="Subsystem\RGG_LUT.cs" />
+    <Compile Include="Subsystem\RGG_SAT_Controller.cs" />
+    <Compile Include="Subsystem\StarCAM_FullScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subsystem\StarCAM_FullScreen.Designer.cs">
+      <DependentUpon>StarCAM_FullScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\MWIR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\MWIR.Designer.cs">
+      <DependentUpon>MWIR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Observation_TMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\Observation_TMS.Designer.cs">
+      <DependentUpon>Observation_TMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\OpticalSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\OpticalSystem.designer.cs">
+      <DependentUpon>OpticalSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_AID.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_AID.Designer.cs">
+      <DependentUpon>SystemDiagnostic_AID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_WMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_WMS.Designer.cs">
+      <DependentUpon>SystemDiagnostic_WMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_GPS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_GPS.Designer.cs">
+      <DependentUpon>SystemDiagnostic_GPS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\EMCCD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\EMCCD.Designer.cs">
+      <DependentUpon>EMCCD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\groundResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\groundResult.Designer.cs">
+      <DependentUpon>groundResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\GroundCalibration_Info.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\GroundCalibration_Info.Designer.cs">
+      <DependentUpon>GroundCalibration_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\GroundCalibration_RangeGatePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\GroundCalibration_RangeGatePanel.Designer.cs">
+      <DependentUpon>GroundCalibration_RangeGatePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Observation_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\Observation_Control.Designer.cs">
+      <DependentUpon>Observation_Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Observation_TMS_old.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\Observation_TMS_old.Designer.cs">
+      <DependentUpon>Observation_TMS_old.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\OpticalSystem_Old.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\OpticalSystem_Old.Designer.cs">
+      <DependentUpon>OpticalSystem_Old.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Observation_RangeGatePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\Observation_RangeGatePanel.Designer.cs">
+      <DependentUpon>Observation_RangeGatePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_AirplaneWarning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_AirplaneWarning.Designer.cs">
+      <DependentUpon>RecordManagement_AirplaneWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfGroundCal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfGroundCal.Designer.cs">
+      <DependentUpon>RecordManagement_ResultOfGroundCal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_StatisticsOfObservation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_StatisticsOfObservation.Designer.cs">
+      <DependentUpon>RecordManagement_StatisticsOfObservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfObservation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfObservation.Designer.cs">
+      <DependentUpon>RecordManagement_ResultOfObservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfStarCal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ResultOfStarCal.Designer.cs">
+      <DependentUpon>RecordManagement_ResultOfStarCal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_Satellite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_Satellite.Designer.cs">
+      <DependentUpon>RecordManagement_Satellite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_StarCatalog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_StarCatalog.Designer.cs">
+      <DependentUpon>RecordManagement_StarCatalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_FaultHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_FaultHistory.Designer.cs">
+      <DependentUpon>RecordManagement_FaultHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_Environment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_Environment.Designer.cs">
+      <DependentUpon>RecordManagement_Environment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_AccessHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_AccessHistory.Designer.cs">
+      <DependentUpon>RecordManagement_AccessHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\StarCalibration_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\StarCalibration_Control.Designer.cs">
+      <DependentUpon>StarCalibration_Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\StarCalibration_Setting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\StarCalibration_Setting.Designer.cs">
+      <DependentUpon>StarCalibration_Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subsystem\starCAM_ASI2600MMPro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Subsystem\starCAM_ASI2600MMPro.Designer.cs">
+      <DependentUpon>starCAM_ASI2600MMPro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostics.Designer.cs">
+      <DependentUpon>SystemDiagnostics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_DOM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_DOM.Designer.cs">
+      <DependentUpon>SystemDiagnostic_DOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_LAS_SAT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_LAS_SAT.Designer.cs">
+      <DependentUpon>SystemDiagnostic_LAS_SAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_RGG_SAT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_RGG_SAT.Designer.cs">
+      <DependentUpon>SystemDiagnostic_RGG_SAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_TMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\SystemDiagnostic_TMS.Designer.cs">
+      <DependentUpon>SystemDiagnostic_TMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\TIME.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\TIME.Designer.cs">
+      <DependentUpon>TIME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_TLECPF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_TLECPF.Designer.cs">
+      <DependentUpon>RecordManagement_TLECPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ObservationResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\RecordManagement_ObservationResult.Designer.cs">
+      <DependentUpon>RecordManagement_ObservationResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\UserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Module\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Tcp_Client.cs" />
+    <Compile Include="Network\Serial_RGG.cs" />
+    <Compile Include="Network\Serial_RGG_CMD.cs" />
+    <Compile Include="Network\Tcp_Server.cs" />
+    <Compile Include="OAS\BodyLocationGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\BodyLocationGenerator.Designer.cs">
+      <DependentUpon>BodyLocationGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\CommandGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\CommandGenerator.Designer.cs">
+      <DependentUpon>CommandGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\EKF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\EphemerisGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\EphemerisGenerator.Designer.cs">
+      <DependentUpon>EphemerisGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\LeastSquares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\OAS_Controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\OAS_Controller.Designer.cs">
+      <DependentUpon>OAS_Controller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\SetMeasurement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\SetMeasurement.Designer.cs">
+      <DependentUpon>SetMeasurement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\ResidualPlotViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\ResidualPlotViewer.Designer.cs">
+      <DependentUpon>ResidualPlotViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\SetDynamics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\SetDynamics.Designer.cs">
+      <DependentUpon>SetDynamics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\SetEstimator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\SetEstimator.Designer.cs">
+      <DependentUpon>SetEstimator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\SetLaser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\SetLaser.Designer.cs">
+      <DependentUpon>SetLaser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\SetObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\SetObject.Designer.cs">
+      <DependentUpon>SetObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\OAS_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OAS\OAS_Main.Designer.cs">
+      <DependentUpon>OAS_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\UC_SetDynamics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OAS\UC_SetDynamics.Designer.cs">
+      <DependentUpon>UC_SetDynamics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OAS\UC_CommandGenerator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OAS\UC_CommandGenerator.Designer.cs">
+      <DependentUpon>UC_CommandGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrbitData\CPF_Reader.cs" />
+    <Compile Include="OrbitData\TLE_Reader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CSU_GroundCalibration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CSU_GroundCalibration.Designer.cs">
+      <DependentUpon>CSU_GroundCalibration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Server.cs" />
+    <Compile Include="StarDataTable.cs" />
+    <Compile Include="Subsystem\AID_Controller.cs" />
+    <Compile Include="Subsystem\DOM_Controller_v40.cs" />
+    <Compile Include="Subsystem\ISubSystem.cs" />
+    <Compile Include="Subsystem\LAS_SAT_Controller.cs" />
+    <Compile Include="Subsystem\RGG_DEB_Controller.cs" />
+    <Compile Include="Subsystem\SubSystemManager.cs" />
+    <Compile Include="Tcp.cs" />
+    <Compile Include="tcspk.cs" />
+    <Compile Include="Test_SatelliteAZEL.cs" />
+    <Compile Include="UserControlManager.cs" />
+    <Compile Include="UserManagement_Modify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement_Modify.Designer.cs">
+      <DependentUpon>UserManagement_Modify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement_Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement_Password.Designer.cs">
+      <DependentUpon>UserManagement_Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\AnimateImage.cs" />
+    <Compile Include="Util\CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Util\CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\RawBitmap.cs" />
+    <Compile Include="Util\DisplayResolutionSetting.cs" />
+    <Compile Include="Util\IniUtil.cs" />
+    <Compile Include="Util\Utils.cs" />
+    <EmbeddedResource Include="AddTLE_Form.resx">
+      <DependentUpon>AddTLE_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Checking_OvservingData.resx">
+      <DependentUpon>Checking_OvservingData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSU_GroundCalibration.resx">
+      <DependentUpon>CSU_GroundCalibration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSU_Observation.resx">
+      <DependentUpon>CSU_Observation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSU_ObserveSchedule2.resx">
+      <DependentUpon>CSU_ObserveSchedule2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSU_StarCalibration.resx">
+      <DependentUpon>CSU_StarCalibration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSU_ObserveSchedule.resx">
+      <DependentUpon>CSU_ObserveSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\CAMs.resx">
+      <DependentUpon>CAMs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\ChartView.resx">
+      <DependentUpon>ChartView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\circular.resx">
+      <DependentUpon>circular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Common_TMS.resx">
+      <DependentUpon>Common_TMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\ConfigSetting.resx">
+      <DependentUpon>ConfigSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\debuggingPlot.resx">
+      <DependentUpon>debuggingPlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\ScanOption.resx">
+      <DependentUpon>ScanOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_LAS_DEB.resx">
+      <DependentUpon>SystemDiagnostic_LAS_DEB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_RGG_DEB.resx">
+      <DependentUpon>SystemDiagnostic_RGG_DEB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObserveSchedule_Edit.resx">
+      <DependentUpon>ObserveSchedule_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Progress_State.resx">
+      <DependentUpon>Progress_State.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subsystem\StarCAM_FullScreen.resx">
+      <DependentUpon>StarCAM_FullScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\MWIR.resx">
+      <DependentUpon>MWIR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Observation_TMS.resx">
+      <DependentUpon>Observation_TMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\OpticalSystem.resx">
+      <DependentUpon>OpticalSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_AID.resx">
+      <DependentUpon>SystemDiagnostic_AID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_GPS.resx">
+      <DependentUpon>SystemDiagnostic_GPS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\EMCCD.resx">
+      <DependentUpon>EMCCD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\GroundCalibration_Info.resx">
+      <DependentUpon>GroundCalibration_Info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\GroundCalibration_RangeGatePanel.resx">
+      <DependentUpon>GroundCalibration_RangeGatePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\groundResult.resx">
+      <DependentUpon>groundResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Observation_Control.resx">
+      <DependentUpon>Observation_Control.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Observation_TMS_old.resx">
+      <DependentUpon>Observation_TMS_old.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\OpticalSystem_Old.resx">
+      <DependentUpon>OpticalSystem_Old.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Observation_RangeGatePanel.resx">
+      <DependentUpon>Observation_RangeGatePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement.resx">
+      <DependentUpon>RecordManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_AirplaneWarning.resx">
+      <DependentUpon>RecordManagement_AirplaneWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_ResultOfGroundCal.resx">
+      <DependentUpon>RecordManagement_ResultOfGroundCal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_StatisticsOfObservation.resx">
+      <DependentUpon>RecordManagement_StatisticsOfObservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_ResultOfObservation.resx">
+      <DependentUpon>RecordManagement_ResultOfObservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_ResultOfStarCal.resx">
+      <DependentUpon>RecordManagement_ResultOfStarCal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_Satellite.resx">
+      <DependentUpon>RecordManagement_Satellite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_StarCatalog.resx">
+      <DependentUpon>RecordManagement_StarCatalog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_FaultHistory.resx">
+      <DependentUpon>RecordManagement_FaultHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_Environment.resx">
+      <DependentUpon>RecordManagement_Environment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_ObservationResult.resx">
+      <DependentUpon>RecordManagement_ObservationResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_AccessHistory.resx">
+      <DependentUpon>RecordManagement_AccessHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\RecordManagement_TLECPF.resx">
+      <DependentUpon>RecordManagement_TLECPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\StarCalibration_Control.resx">
+      <DependentUpon>StarCalibration_Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\StarCalibration_Setting.resx">
+      <DependentUpon>StarCalibration_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subsystem\starCAM_ASI2600MMPro.resx">
+      <DependentUpon>starCAM_ASI2600MMPro.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostics.resx">
+      <DependentUpon>SystemDiagnostics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_DOM.resx">
+      <DependentUpon>SystemDiagnostic_DOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_LAS_SAT.resx">
+      <DependentUpon>SystemDiagnostic_LAS_SAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_RGG_SAT.resx">
+      <DependentUpon>SystemDiagnostic_RGG_SAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_TMS.resx">
+      <DependentUpon>SystemDiagnostic_TMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SystemDiagnostic_WMS.resx">
+      <DependentUpon>SystemDiagnostic_WMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\TIME.resx">
+      <DependentUpon>TIME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OAS\BodyLocationGenerator.resx">
+      <DependentUpon>BodyLocationGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OAS\OAS_Controller.resx">
+      <DependentUpon>OAS_Controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OAS\OAS_Main.resx">
+      <DependentUpon>OAS_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OAS\UC_SetDynamics.resx">
+      <DependentUpon>UC_SetDynamics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OAS\UC_CommandGenerator.resx">
+      <DependentUpon>UC_CommandGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement_Modify.resx">
+      <DependentUpon>UserManagement_Modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement_Password.resx">
+      <DependentUpon>UserManagement_Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Util\CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="libOpenCvSharpExtern.so" />
+    <None Include="OAS\Database\EOP\deltat.dat" />
+    <None Include="OAS\Database\EOP\tai-utc.dat" />
+    <None Include="OAS\Database\GravityModel\EGM96.cof" />
+    <None Include="OAS\Database\GravityModel\JGM2.cof" />
+    <None Include="OAS\Database\GravityModel\JGM2F70.cof" />
+    <None Include="OAS\Database\GravityModel\JGM3.cof" />
+    <None Include="OAS\Database\SolarSystem\DE405.csv" />
+    <None Include="OAS\Database\SolarSystem\DE430.csv" />
+    <None Include="OAS\Database\SolarSystem\DE436.csv" />
+    <None Include="OAS\Resources\activeTLE_230830.TLE" />
+    <None Include="OAS\Resources\Ephemeris\CPF\lageos1_cpf_210130_03001.hts" />
+    <None Include="OAS\Resources\Ephemeris\SP3\esa.orb.lageos1.210123.v70.sp3" />
+    <None Include="OAS\Resources\esa.pos+eop.210102.v170.snx" />
+    <None Include="OAS\Resources\Observation\lageos1_20210102.frd" />
+    <None Include="OAS\Resources\Observation\lageos1_20210102.npt" />
+    <None Include="OAS\Resources\Observation\lageos1_20210102_test.frd" />
+    <None Include="OpenCvSharp.Blob.dll.config" />
+    <None Include="OpenCvSharp.CPlusPlus.dll.config" />
+    <None Include="OpenCvSharp.dll.config" />
+    <None Include="OpenCvSharp.MachineLearning.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.cloud.Sun-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.skyAmbientTherature-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.ambientTemperature-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.rain-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.air-pressure-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.humidity-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.dewPoint-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8.wind-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.skyBrightness-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10.roofSignal-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greencircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redcircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cylinder-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cylinder-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nslr-station.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3level_Bar_345.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3level_Bar_3451.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3level_Bar_3452.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3level_Bar_3453.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif_observertaory.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iltmx100_23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-settting100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_play100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-play-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-explode-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-stop-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ranging-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-satellite-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-starCalibration-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-play-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laser_reflector-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configurationSetting-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_management-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\record-managemnet-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="Libs\OpenGlobe.Core.dll" />
+    <Analyzer Include="Libs\OpenGlobe.Renderer.dll" />
+    <Analyzer Include="Libs\OpenGlobe.Scene.dll" />
+    <Analyzer Include="Libs\OpenTK.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\NSLR-OAS.dll" />
+    <Content Include="Libs\OpenGlobe.Core.dll" />
+    <Content Include="Libs\OpenGlobe.Renderer.dll" />
+    <Content Include="Libs\OpenGlobe.Scene.dll" />
+    <Content Include="Libs\OpenTK.dll" />
+    <None Include="Resources\debris.png" />
+    <None Include="Resources\satellite.png" />
+    <None Include="Resources\wgs27001.jpg" />
+    <None Include="Resources\satOrbit_icon.ico" />
+    <None Include="Resources\satOrbit1.png" />
+    <None Include="Resources\icons8-oas.png" />
+    <Content Include="OAS\Database\Atmosphere\DTCFILE.TXT" />
+    <Content Include="OAS\Database\Atmosphere\SpaceWeather-v1.2.txt" />
+    <Content Include="OAS\Database\EOP\10_FINALS.DATA_IAU2000_V2013_0110.txt" />
+    <Content Include="OAS\Database\EOP\223_EOP_C04_14.62-NOW.IAU1980223.txt" />
+    <Content Include="OAS\Database\OceanTideModel\CSR3\CSR3.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_2N2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_K1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_K2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_M2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_M4.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Mf.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Mm.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Msq.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Mtm.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_N2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_O1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Om.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_P1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Q1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_S2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Sa.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2004\fes2004_Ssa.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_2N2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_K1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_K2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_M2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_M4.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Mf.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Mm.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Msq.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Mtm.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_N2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_O1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Om1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Om2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_P1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Q1.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_S2.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Sa.txt" />
+    <Content Include="OAS\Database\OceanTideModel\fes2014\fes2014_Ssa.txt" />
+    <None Include="Resources\warning100.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\DomeClosed.png" />
+    <None Include="Resources\DomeOpened.png" />
+    <Content Include="Resources\거창관측소-투시도-0928-.jpg" />
+    <None Include="Resources\icons8-diagnostic-100_1.png" />
+    <None Include="Resources\배경.jpg" />
+    <None Include="Resources\wgs1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OrbitData\TLEs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.8.0.20230708\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.8.0.20230708\build\net48\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)NSLR_ObservationControl\OrbitData\TLE\*.*" "$(TargetDir)OrbitData\TLE\"
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\ASICamera2.dll" "$(TargetDir)"
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\NSLR-OAS.dll" "$(TargetDir)"
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\sofa.dll" "$(TargetDir)"
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\CRD.dll" "$(TargetDir)"
+
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Resources\*.*" "$(TargetDir)Resources"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Resources\Ephemeris\CPF\*.*" "$(TargetDir)Resources\Ephemeris\CPF"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Resources\Ephemeris\SP3\*.*" "$(TargetDir)Resources\Ephemeris\SP3"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Resources\Observation\*.*"      "$(TargetDir)Resources\Observation"
+
+
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\Atmosphere\*.*" "$(TargetDir)Database\Atmosphere"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\EOP\*.*" "$(TargetDir)Database\EOP"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\GravityModel\*.*" "$(TargetDir)\Database\GravityModel"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\OceanTideModel\CSR3\*.*"    "$(TargetDir)Database\OceanTideModel\CSR3"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\OceanTideModel\fes2004\*.*" "$(TargetDir)Database\OceanTideModel\fes2004"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\OceanTideModel\fes2014\*.*" "$(TargetDir)Database\OceanTideModel\fes2014"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Database\SolarSystem\*.*" "$(TargetDir)Database\SolarSystem"
+copy "$(SolutionDir)NSLR_ObservationControl\OAS\Outputs\*.*" "$(TargetDir)Outputs"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(TargetDir)OrbitData\CPF" mkdir "$(TargetDir)OrbitData\CPF"
+if not exist "$(TargetDir)OrbitData\TLE" mkdir "$(TargetDir)OrbitData\TLE"
+
+if not exist "$(TargetDir)\Resources\Ephemeris\CPF"          mkdir  "$(TargetDir)\Resources\Ephemeris\CPF"
+if not exist "$(TargetDir)\Resources\Ephemeris\SP3"          mkdir  "$(TargetDir)\Resources\Ephemeris\SP3"
+if not exist "$(TargetDir)\Resources\Observation"          mkdir  "$(TargetDir)\Resources\Observation"
+
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\GanttChart.dll" "$(TargetDir)"
+copy "$(SolutionDir)NSLR_ObservationControl\Libs\tcspkDLL.dll" "$(TargetDir)"
+
+
+if not exist "$(TargetDir)\Database\Atmosphere"    mkdir "$(TargetDir)\Database\Atmosphere"
+if not exist "$(TargetDir)\Database\EOP"               mkdir  "$(TargetDir)\Database\EOP"
+if not exist "$(TargetDir)\Database\GravityModel"   mkdir  "$(TargetDir)\Database\GravityModel"
+if not exist "$(TargetDir)\Database\OceanTideModel\CSR3"      mkdir  "$(TargetDir)\Database\OceanTideModel\CSR3"
+if not exist "$(TargetDir)\Database\OceanTideModel\fes2004"   mkdir  "$(TargetDir)\Database\OceanTideModel\fes2004"
+if not exist "$(TargetDir)\Database\OceanTideModel\fes2014"   mkdir  "$(TargetDir)\Database\OceanTideModel\fes2014"
+if not exist "$(TargetDir)\Database\SolarSystem"               mkdir  "$(TargetDir)\Database\SolarSystem"
+if not exist "$(TargetDir)\Outputs"   mkdir  "$(TargetDir)\Outputs"
+if not exist "$(TargetDir)\Outputs\Ephemeris"   mkdir  "$(TargetDir)\Outputs\Ephemeris"
+if not exist "$(TargetDir)\TLE"   mkdir  "$(TargetDir)\TLE"
+if not exist "$(TargetDir)\CPF"   mkdir  "$(TargetDir)\CPF"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

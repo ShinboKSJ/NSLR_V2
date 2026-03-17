@@ -1,0 +1,8 @@
+# WrittenBy	OAS-NSLR
+Body: Sun
+Time System: UTC
+Start Time: 2024/10/8 4:0:0.000029
+Final Time: 2024/10/9 4:0:0.000029
+
+Rise Time: 2024/10/8 21:14:42.562262
+Set Time: 2024/10/8 8:55:7.955386

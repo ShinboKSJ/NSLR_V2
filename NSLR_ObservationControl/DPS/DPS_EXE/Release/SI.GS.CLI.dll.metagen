@@ -1,0 +1,47 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly SI.GS.CLI, Version=1.0.*, Culture=고정 언어(고정 국가): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly Microsoft.VisualC, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Class SI.GS.CLI.Image.Processing.HistogramWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    GetHistogramEqualizationLUT(Int32, Boolean(HasFieldMarshal), Double& IsExplicitlyDereferenced): PrivateScope, Public, HideBySig
+    InitializeHistogramLUT(): PrivateScope, Public, HideBySig
+    InitializeHistogram(): PrivateScope, Public, HideBySig
+    DisallocUnmanagedMemory(IntPtr): PrivateScope, Public, HideBySig
+    IsExistHistogram(): PrivateScope, Public, HideBySig
+    IsExistHistogramLUT(): PrivateScope, Public, HideBySig
+    SetNullPixelValue(Double): PrivateScope, Public, HideBySig
+    SetNullPixelEliminationFlag(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GetNullPixelValue(): PrivateScope, Public, HideBySig
+    GetNullPixelEliminationFlag(): PrivateScope, Public, HideBySig
+    GetEnhancedImage(Double& IsExplicitlyDereferenced, IntPtr, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    GetImageStatistics(Int32, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced, Double& IsExplicitlyDereferenced): PrivateScope, Public, HideBySig
+    SetImageStatistics(Int32, Int32, Double, Double, Double, Double, Double, Double, Double, Double, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GenerateHistogram(IntPtr, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    GenerateLinearStretchLUTByPixelLUT(IntPtr, Int32, Int32, Int32, Int32, Int32, Double, Double): PrivateScope, Public, HideBySig
+    GenerateLinearStretchLUTByPixelLUT(Double, Double): PrivateScope, Public, HideBySig
+    GenerateLinearStretchLUTByPercentLUT(IntPtr, Int32, Int32, Int32, Int32, Int32, Double, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GenerateLinearStretchLUTByPercentLUT(Double, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GenerateHistogramEqualizationLUT(IntPtr, Int32, Int32, Int32, Int32, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GenerateHistogramEqualizationLUT(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    GetHistogram(Double& IsExplicitlyDereferenced, IntPtr, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    GetHistogram(Int32, Double& IsExplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetConvertionLUT(Double& IsExplicitlyDereferenced, Int32): PrivateScope, Public, HideBySig
+    GetLinearStretchByPixelLUT(Int32, Double, Double, Double& IsExplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetLinearStretchByPercentLUT(Int32, Double, Boolean(HasFieldMarshal), Double& IsExplicitlyDereferenced): PrivateScope, Public, HideBySig
+    CreateHistogramVariable(Int32, Int32): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

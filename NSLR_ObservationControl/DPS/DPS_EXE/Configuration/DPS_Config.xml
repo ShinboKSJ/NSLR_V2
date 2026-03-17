@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DPS>
+	<Database>
+		<DBConnectionString>Data Source=172.16.100.10;Initial Catalog=HSLR;Persist Security Info=True;User ID=sa;Password=system</DBConnectionString>
+	</Database>
+	<Log>
+		<Log4NetConfigPath>..\Log\SystemLog.config</Log4NetConfigPath>
+	</Log>
+	<Directory>
+		<Root>E:\HSLR\DPS\</Root>
+		<Log>E:\HSLR_src\Bin\DPS\Log\</Log>
+		<Observation_NPT>D:\KASI_DPS_한화배포_20250910\DPS_EXE\Observation\NPT\</Observation_NPT>
+		<Observation_FRD>D:\KASI_DPS_한화배포_20250910\DPS_EXE\Observation\FRD\</Observation_FRD>
+		<Observation_SOS>E:\HSLR\SOS\Observation\</Observation_SOS>
+	</Directory>
+	<GraphDisplay>
+		<PointColor_Red>192</PointColor_Red>
+		<PointColor_Green>80</PointColor_Green>
+		<PointColor_Blue>77</PointColor_Blue>
+		<BackgroundColor_Red>255</BackgroundColor_Red>
+		<BackgroundColor_Green>255</BackgroundColor_Green>
+		<BackgroundColor_Blue>255</BackgroundColor_Blue>
+		<GridVisible>true</GridVisible>
+	</GraphDisplay>
+	<DefaultStationName>SEJL</DefaultStationName>
+	<Station>
+		<StationName>SEJL</StationName>
+		<StationID>7394</StationID>
+		<Longitude>127.302913</Longitude>
+		<Latitude>36.520991</Latitude>
+		<Height>176.415</Height>
+		<UTM_X>-3110108.3836</UTM_X>
+		<UTM_Y>4082170.2894</UTM_Y>
+		<UTM_Z>3774911.7489</UTM_Z>
+		<GCTargetDistance>2.6564</GCTargetDistance>
+	</Station>
+	<Station>
+		<StationName>DAEK</StationName>
+		<StationID>7359</StationID>
+		<Longitude>127.374708</Longitude>
+		<Latitude>36.399034</Latitude>
+		<Height>116.5566</Height>
+		<UTM_X>-3120073.9505</UTM_X>
+		<UTM_Y>4084622.8343</UTM_Y>
+		<UTM_Z>3763991.5411</UTM_Z>
+		<GCTargetDistance>2.6564</GCTargetDistance>
+	</Station>
+	<MountCollimationError>0</MountCollimationError>
+	<WaveLength>5320</WaveLength>
+</DPS>

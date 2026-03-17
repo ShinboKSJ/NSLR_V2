@@ -1,0 +1,32 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docview
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+build/
+
+# NuGet
+packages/
+*.nupkg
+
+# Logs
+*.log
+Log/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Documents
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
